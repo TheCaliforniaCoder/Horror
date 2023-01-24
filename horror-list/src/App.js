@@ -7,13 +7,13 @@ constructor(props){
   super(props);
   this.state = {
     food: [],
-    newFood: ''
+    searchValue: '', 
+    newFood:  ''
   }
 }
 
 componentDidMount(){
   
- 
   const options = {
     method: 'GET',
     url: 'https://tasty.p.rapidapi.com/recipes/auto-complete',
@@ -31,26 +31,19 @@ componentDidMount(){
   });
 }
 
+handleSearchChange = (e) =>{
+  const textValue = e.target.value;
+//allow user to input text
+  
+}
 
-
-/* const apiKey = process.env.REACT_APP_TMDB_API_KEY
-const url = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`
-
-axios.get(url)
-.then(response => {
- return response.data
-}).then(results => {
-  this.setState({
-    current: results
-  })
-}) */
 
 addFood = (e) => {
   e.preventDefault();
 
   this.setState({
     food: [this.state.food, this.state.newFood],
-    newFood: ''
+    searchValue: ''
   })
 }
 
