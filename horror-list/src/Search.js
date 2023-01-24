@@ -2,7 +2,7 @@ const Search = function(props){
     
 return (
     <div>
-        <label>Search Character Here:</label>
+        <label>Search Character Name Here:</label>
         <input type='text' 
          placeholder="Add a new character..."
          value={props.value}

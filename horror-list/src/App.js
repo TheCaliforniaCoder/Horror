@@ -60,7 +60,12 @@ clearList = (e) => {
 
  render(){
 const characterArray = this.state.character.map(function (item, index) {
-  return <Character name={item.name} status={item.status} species={item.species} key={index} />
+  return <Character name={item.name}
+                    status={item.status} 
+                    species={item.species} 
+                    location={item.location.name}
+                    image={item.image}
+                    key={index} />
 })
 
   return (
