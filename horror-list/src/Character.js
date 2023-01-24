@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Food extends Component{
+class Character extends Component{
 render(){
     return (
         <div>
-            <li>Will have to pass in props</li>
+            <h1>{this.props.name}</h1>
         </div>
     )
 }
 }
 
-export default Food;
+export default Character;

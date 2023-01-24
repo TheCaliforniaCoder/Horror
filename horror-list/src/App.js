@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Food from './Food';
+import Character from './Character';
 import Search from './Search';
 import axios from 'axios'; 
 
@@ -7,29 +7,14 @@ class App extends Component{
 constructor(props){
   super(props);
   this.state = {
-    food: [],
-    searchValue: '', 
-    newFood:  ''
+    searchValue: '',
+    character: [] //array
   }
 }
 
 componentDidMount(){
   
-  const options = {
-    method: 'GET',
-    url: 'https://tasty.p.rapidapi.com/recipes/auto-complete',
-    params: {prefix: 'chicken soup'},
-    headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-      'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
-    }
-  };
-  
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-  }).catch(function (error) {
-    console.error(error);
-  });
+ this.apiCall();
 }
 
 handleSearchChange = (e) =>{
@@ -38,15 +23,15 @@ handleSearchChange = (e) =>{
   this.setState({
     searchValue: textValue
   })
+  this.apiCall()
   console.log(textValue)
 }
 
 
 addFood = (e) => {
   e.preventDefault();
-
   this.setState({
-    food: [this.state.food, this.state.newFood],
+    character: [this.state.character],
     searchValue: ''
   })
 }
@@ -54,25 +39,36 @@ addFood = (e) => {
 clearList = (e) => {
   console.log('clearing list')
   this.setState({
-    food: []
+    character: []
   })
 }
 
+  apiCall() {
+    const url = 'https://rickandmortyapi.com/api/character'
+    
+
+    axios.get(url)
+    .then(response => {
+      return response.data.results
+    }).then(results => {
+      console.log('this is results', results)
+      this.setState({
+        character: results
+      })
+    })
+  }
+
  render(){
+const characterArray = this.state.character.map(function (item, index) {
+  return <Character name={item.name} status={item.status} species={item.species} key={index} />
+})
+
   return (
     <div>
-      <h1>Food List</h1>
-      
-      <form>
-        <Search value={this.state.searchValue}
-        onChange={this.handleSearchChange}/>
-        <ul>
-        <Food />
-      </ul>
-
-        <button onClick={this.addFood}>Add Food</button>
-        <button onClick={this.clearList}>Clear List</button>
-      </form>
+      <h1>Character List</h1>
+      {characterArray}
+       
+     
     </div>
   )
  }
