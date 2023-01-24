@@ -17,13 +17,13 @@ componentDidMount(){
  this.apiCall();
 }
 
-handleSearchChange = (e) =>{
+handleSearchChange = (e) => {
   const textValue = e.target.value;
   this.apiCall()
   console.log(textValue)
 
   const filteredCharacterList = this.state.characters.filter(function(person) {
-    return person.toLowerCase().includes(textValue.toLowerCase())
+    return person
   })
 
   //allow user to input text
