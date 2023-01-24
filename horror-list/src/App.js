@@ -8,7 +8,7 @@ constructor(props){
   super(props);
   this.state = {
     searchValue: '',
-    character: [] //array
+    characters: [] //array
   }
 }
 
@@ -19,27 +19,36 @@ componentDidMount(){
 
 handleSearchChange = (e) =>{
   const textValue = e.target.value;
-//allow user to input text
-  this.setState({
-    searchValue: textValue
-  })
   this.apiCall()
   console.log(textValue)
+
+  const filteredCharacterList = this.state.characters.filter(function(person) {
+    return person.toLowerCase().includes(textValue.toLowerCase())
+  })
+
+  //allow user to input text
+  this.setState({
+    searchValue: textValue,
+    characters: filteredCharacterList 
+    
+  })
+
+
 }
 
 
-addFood = (e) => {
+addCharacter = (e) => {
   e.preventDefault();
   this.setState({
-    character: [this.state.character],
+    characters: [...this.state.characters, this.state.searchValue],
     searchValue: ''
   })
 }
 
 clearList = (e) => {
-  console.log('clearing list')
+  console.log('clearing list...')
   this.setState({
-    character: []
+    characters: []
   })
 }
 
@@ -53,13 +62,13 @@ clearList = (e) => {
     }).then(results => {
       console.log('this is results', results)
       this.setState({
-        character: results
+        characters: results
       })
     })
   }
 
  render(){
-const characterArray = this.state.character.map(function (item, index) {
+const characterArray = this.state.characters.map(function (item, index) {
   return <Character name={item.name}
                     status={item.status} 
                     species={item.species} 
@@ -75,6 +84,7 @@ const characterArray = this.state.character.map(function (item, index) {
       <form>
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
+        <button onClick={this.addCharacter}>Add Character</button>         
       </form>
       {characterArray}
      
