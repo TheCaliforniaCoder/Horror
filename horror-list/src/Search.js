@@ -5,7 +5,9 @@ return (
     <div>
         <label>Search Food Here:</label>
         <input type='text' 
-         placeholder="Add a new food item..."/>
+         placeholder="Add a new food item..."
+         value={props.value}
+         onChange={props.onChange}/>
     </div>
 )
 

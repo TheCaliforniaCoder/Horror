@@ -35,7 +35,10 @@ componentDidMount(){
 handleSearchChange = (e) =>{
   const textValue = e.target.value;
 //allow user to input text
-  
+  this.setState({
+    searchValue: textValue
+  })
+  console.log(textValue)
 }
 
 
@@ -61,7 +64,8 @@ clearList = (e) => {
       <h1>Food List</h1>
       
       <form>
-        <Search />
+        <Search value={this.state.searchValue}
+        onChange={this.handleSearchChange}/>
         <ul>
         <Food />
       </ul>
