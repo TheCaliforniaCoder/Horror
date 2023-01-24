@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Food from './Food';
+import Search from './Search';
 import axios from 'axios'; 
 
 class App extends Component{
@@ -58,13 +59,12 @@ clearList = (e) => {
   return (
     <div>
       <h1>Food List</h1>
-      <ul>
+      
+      <form>
+        <Search />
+        <ul>
         <Food />
       </ul>
-      <form>
-        <input type='text'
-        placeholder="Add a new food item..."
-        />
 
         <button onClick={this.addFood}>Add Food</button>
         <button onClick={this.clearList}>Clear List</button>
