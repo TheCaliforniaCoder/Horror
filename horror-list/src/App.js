@@ -63,6 +63,7 @@ const characterArray = this.state.character.map(function (item, index) {
   return <Character name={item.name}
                     status={item.status} 
                     species={item.species} 
+                    origin={item.origin.name}
                     location={item.location.name}
                     image={item.image}
                     key={index} />
@@ -71,8 +72,11 @@ const characterArray = this.state.character.map(function (item, index) {
   return (
     <div>
       <h1>Character List</h1>
+      <form>
+        <Search value={this.state.searchValue}
+                onChange={this.handleSearchChange}/>
+      </form>
       {characterArray}
-       
      
     </div>
   )
