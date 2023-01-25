@@ -23,7 +23,7 @@ handleSearchChange = (e) => {
   console.log(textValue)
 
   const filteredCharacterList = this.state.characters.filter(function(person) {
-    return person
+    return person.name.toLowerCase().includes(textValue.toLowerCase())
   })
 
   //allow user to input text
@@ -80,12 +80,14 @@ const characterArray = this.state.characters.map(function (item, index) {
 
   return (
     <div>
-      <h1>Character List</h1>
+      <h1 className="title">Rick and Morty Character List</h1>
       <form>
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
-        <button onClick={this.addCharacter}>Add Character</button>         
+        <button onClick={this.addCharacter}>Add Character</button>   
+              
       </form>
+      <button onClick={this.clearList}>Clear List</button>
       {characterArray}
      
     </div>
