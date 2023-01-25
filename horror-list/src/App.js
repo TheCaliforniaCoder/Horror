@@ -9,7 +9,8 @@ constructor(props){
   this.state = {
     searchValue: '',
     characters: [], //array
-    filteredCharacters: []
+    filteredCharacters: [],
+    faves: []
   }
 }
 
@@ -33,9 +34,27 @@ handleSearchChange = (e) => {
     filteredCharacters: filteredCharacterList 
     
   })
-
-
 }
+
+addToFavorite = (character) => {
+  this.setState({
+    faves: [...this.state.faves, character]
+  })
+}
+
+/* handleFave = (e) => {
+  const faves = this.state.faves.slice();
+  const characterIndex = faves.indexOf(e);
+  if(faves.includes(e)){
+    console.log('Removing character');
+    faves.splice(characterIndex, 1)
+  }else {
+    console.log('Adding a character');
+    faves.push(e)
+  }
+
+  this.setState({faves}) // not sure if this part is correct
+} */
 
 
 addCharacter = (e) => {
@@ -70,13 +89,14 @@ clearList = (e) => {
   }
 
  render(){
-const characterArray = this.state.filteredCharacters.map(function (item, index) {
+const characterArray = this.state.filteredCharacters.map((item, index) => {
   return <Character name={item.name}
                     status={item.status} 
                     species={item.species} 
                     origin={item.origin.name}
                     location={item.location.name}
                     image={item.image}
+                    addToFavorite={this.addToFavorite}
                     key={index} />
 })
 
@@ -86,6 +106,7 @@ const characterArray = this.state.filteredCharacters.map(function (item, index) 
       <form>
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
+        {/* <Character fave={this.handleFave}/>  */}
         <button onClick={this.addCharacter}>Add Character</button>   
               
       </form>

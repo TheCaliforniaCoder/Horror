@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 
 class Character extends Component{
+onClick = (e) => {
+    console.log('button clicked')
+    const character = {
+        name: this.props.name,
+        status: this.props.status,
+        species: this.props.species,
+        origin: this.props.origin,
+        location: this.props.location
+    }
+   this.props.addToFavorite(character)
+}    
 render(){
     return (
         <div className="text" >
@@ -11,6 +22,8 @@ render(){
             <h3>Location: {this.props.location}</h3>
 
             <img className="images" src={this.props.image}/>
+
+            <button onClick={this.onClick}>Add to Favorites</button> 
         </div>
     )
 }
