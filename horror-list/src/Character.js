@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Character extends Component{
 onClick = (e) => {
     console.log('button clicked')
@@ -21,9 +22,10 @@ render(){
             <h3>Origin: {this.props.origin}</h3>
             <h3>Location: {this.props.location}</h3>
 
-            <img className="images" src={this.props.image}/>
+            <img className="images" alt="characters" src={this.props.image}/>
 
             <button onClick={this.onClick}>Add to Favorites</button> 
+            
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Character from './Character';
 import Search from './Search';
+import Faves from './Faves';
 import axios from 'axios'; 
 
 class App extends Component{
@@ -42,28 +43,19 @@ addToFavorite = (character) => {
   })
 }
 
-/* handleFave = (e) => {
-  const faves = this.state.faves.slice();
-  const characterIndex = faves.indexOf(e);
-  if(faves.includes(e)){
-    console.log('Removing character');
-    faves.splice(characterIndex, 1)
-  }else {
-    console.log('Adding a character');
-    faves.push(e)
-  }
+showFavorites = (e) => {
+e.preventDefault();
+console.log('show faves')
+return this.state.faves
+}
 
-  this.setState({faves}) // not sure if this part is correct
-} */
-
-
-addCharacter = (e) => {
+/* addCharacter = (e) => {
   e.preventDefault();
   this.setState({
     characters: [...this.state.characters, this.state.searchValue],
     searchValue: ''
   })
-}
+} */
 
 clearList = (e) => {
   console.log('clearing list...')
@@ -106,11 +98,14 @@ const characterArray = this.state.filteredCharacters.map((item, index) => {
       <form>
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
-        {/* <Character fave={this.handleFave}/>  */}
-        <button onClick={this.addCharacter}>Add Character</button>   
+
+        <Faves onClick={this.showFavorites}/>
+
+        {/* <button onClick={this.addCharacter}>Add Character</button> */}   
               
       </form>
-      <button onClick={this.clearList}>Clear List</button>
+      {/* <button onClick={this.clearList}>Clear List</button> */}
+      
       {characterArray}
      
     </div>
