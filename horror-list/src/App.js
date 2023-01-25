@@ -8,7 +8,8 @@ constructor(props){
   super(props);
   this.state = {
     searchValue: '',
-    characters: [] //array
+    characters: [], //array
+    filteredCharacters: []
   }
 }
 
@@ -19,7 +20,7 @@ componentDidMount(){
 
 handleSearchChange = (e) => {
   const textValue = e.target.value;
-  this.apiCall()
+ /*  this.apiCall() */
   console.log(textValue)
 
   const filteredCharacterList = this.state.characters.filter(function(person) {
@@ -29,7 +30,7 @@ handleSearchChange = (e) => {
   //allow user to input text
   this.setState({
     searchValue: textValue,
-    characters: filteredCharacterList 
+    filteredCharacters: filteredCharacterList 
     
   })
 
@@ -48,7 +49,7 @@ addCharacter = (e) => {
 clearList = (e) => {
   console.log('clearing list...')
   this.setState({
-    characters: []
+    filteredCharacters: []
   })
 }
 
@@ -62,13 +63,14 @@ clearList = (e) => {
     }).then(results => {
       console.log('this is results', results)
       this.setState({
-        characters: results
+        characters: results,
+        filteredCharacters: results
       })
     })
   }
 
  render(){
-const characterArray = this.state.characters.map(function (item, index) {
+const characterArray = this.state.filteredCharacters.map(function (item, index) {
   return <Character name={item.name}
                     status={item.status} 
                     species={item.species} 
