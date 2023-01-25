@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Character from './Character';
 import Search from './Search';
+import NewCharacter from './NewCharacter';
 import Faves from './Faves';
 import axios from 'axios'; 
 
@@ -11,7 +12,8 @@ constructor(props){
     searchValue: '',
     characters: [], //array
     filteredCharacters: [],
-    faves: []
+    faves: [],
+    newCharacterValue: ''
   }
 }
 
@@ -49,13 +51,14 @@ console.log('show faves')
 return this.state.faves
 }
 
-/* addCharacter = (e) => {
-  e.preventDefault();
+addCharacter = (newCharacter) => {
+  /* e.preventDefault(); */
+  console.log('adding character')
   this.setState({
-    characters: [...this.state.characters, this.state.searchValue],
-    searchValue: ''
+    characters: [...this.state.characters, newCharacter],
+    newCharacterValue: ''
   })
-} */
+}
 
 clearList = (e) => {
   console.log('clearing list...')
@@ -99,12 +102,12 @@ const characterArray = this.state.filteredCharacters.map((item, index) => {
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
 
-        <Faves onClick={this.showFavorites}/>
+        {/* <Faves onClick={this.showFavorites}/> */}
 
-        {/* <button onClick={this.addCharacter}>Add Character</button> */}   
+         <NewCharacter onClick={this.addCharacter}/>  
               
       </form>
-      {/* <button onClick={this.clearList}>Clear List</button> */}
+       <button onClick={this.clearList}>Clear List</button> 
       
       {characterArray}
      
