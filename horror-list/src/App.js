@@ -60,6 +60,13 @@ addCharacter = (e) => {
   })
 }
 
+deleteCharacter = (e) => {
+console.log('delete character')
+this.setState({
+
+})
+}
+
 clearList = (e) => {
   console.log('clearing list...')
   this.setState({
@@ -91,6 +98,7 @@ const characterArray = this.state.filteredCharacters.map((item, index) => {
                     origin={item.origin.name}
                     location={item.location.name}
                     image={item.image}
+                    deleteCharacter={this.deleteCharacter}
                     addToFavorite={this.addToFavorite}
                     key={index} />
 })
