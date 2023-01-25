@@ -51,11 +51,11 @@ console.log('show faves')
 return this.state.faves
 }
 
-addCharacter = (newCharacter) => {
-  /* e.preventDefault(); */
+addCharacter = (e) => {
+  const textValue = e.target.value
   console.log('adding character')
   this.setState({
-    characters: [...this.state.characters, newCharacter],
+    characters: [...this.state.characters, textValue],
     newCharacterValue: ''
   })
 }

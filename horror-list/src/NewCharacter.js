@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
+//need to add the newCharacter text value to name key in newCharacter object
+//then need unshift newCharacter to characters array
 
 class NewCharacter extends Component {
     onClick = (e) => {
+        e.preventDefault()
         console.log('button clicked')
         const newCharacter = {
-            name: 'de',
+            name: '',
             status: 'alive...hopefully',
             species: 'human',
             origin: 'earth',
