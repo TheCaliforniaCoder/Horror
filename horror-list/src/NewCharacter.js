@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './NewCharacter.css'
 class NewCharacter extends Component {
     constructor (props) {
         super(props);
@@ -35,11 +35,13 @@ render() {
     return (
         <div>
             <label>Add new character name here:</label>
-             <input type='text' 
-                    placeholder="Add new character name here"
+             <input className='fields'
+                    type='text' 
+                    placeholder='Add new character name here'
                     value={this.state.searchValue}
                     onChange={this.onChange}/>
-            <button onClick={this.onClick}>Add character</button>
+            <button className='button'
+                    onClick={this.onClick}>Add character</button>
         </div>
     )
    }
