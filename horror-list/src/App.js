@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Character from './Character';
 import Search from './Search';
 import NewCharacter from './NewCharacter';
-import Faves from './Faves';
 import axios from 'axios'; 
 
 class App extends Component{
@@ -56,6 +55,19 @@ addToFavorite = (character) => {
   })
 }
 
+changeName = (item, index) => {
+  let changedName = prompt('What do you wish to rename this character?');
+console.log(item, index)
+  const newArray = [...this.state.characters]
+  const itemIndex = newArray.indexOf(item)
+  newArray[itemIndex] = {
+    ...item, name: changedName
+  }
+this.setState({
+  characters: newArray,
+  filteredCharacters: newArray
+})
+}
 
 clearFavorites = (character) => {
   console.log('clearing list...')
@@ -117,6 +129,7 @@ const characterArray = this.state.filteredCharacters.map((item, index) => {
                     image={item.image}
                     deleteCharacter={this.deleteCharacter}
                     addToFavorite={this.addToFavorite}
+                    changeName={() => {this.changeName(item, index)}}
                     key={index} />
 })
 const faveCharacterArray = this.state.faves.map((item, index) => {

@@ -25,6 +25,8 @@ delete = (e) => {
     }
     this.props.deleteCharacter(character)
 }
+
+
 render(){
     return (
         <div className="text" >
@@ -38,6 +40,7 @@ render(){
 
             <button onClick={this.onClick}>Add to Favorites</button> 
             <button onClick={this.delete}>Remove Character</button>
+            <button onClick={this.props.changeName}>Edit Name</button>
             
         </div>
     )
