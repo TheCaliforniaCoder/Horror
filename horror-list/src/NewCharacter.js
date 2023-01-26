@@ -19,7 +19,7 @@ class NewCharacter extends Component {
    render () {
     return (
         <div>
-             <label >Add new character name here:</label>
+             <label>Add new character name here:</label>
             <input type='text' 
              placeholder="Add new character name here"
              value={this.props.value}
