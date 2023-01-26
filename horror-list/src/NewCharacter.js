@@ -41,7 +41,7 @@ render() {
                     value={this.state.searchValue}
                     onChange={this.onChange}/>
             <button className='button'
-                    onClick={this.onClick}>Add</button>
+                    onClick={this.onClick}>Add Character</button>
         </div>
     )
    }

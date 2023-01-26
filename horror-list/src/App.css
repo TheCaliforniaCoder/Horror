@@ -4,8 +4,14 @@
 }
 
 .clear{
-  display: flex;
+  display: block;
   justify-content: center;
+  margin: auto;
+  font-size: 1em;
+  color: rgb(1, 52, 54);
+  padding: 5px;
+  border: 2px solid rgb(11, 167, 190);
+  border-radius: 10px;
 }
 
 .title {
