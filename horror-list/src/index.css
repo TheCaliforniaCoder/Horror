@@ -20,6 +20,10 @@ code {
     monospace;
 }
 
+.headers{
+  color: #8ac02e;
+}
+
 .images {
   border-radius: 10px;
   border-style: solid;

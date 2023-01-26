@@ -40,6 +40,15 @@ handleSearchChange = (e) => {
   })
 }
 
+addCharacter = (newPerson) => {
+ console.log('adding character', newPerson)
+ this.setState({
+   characters: [...this.state.characters, newPerson],
+   filteredCharacters: [...this.state.characters, newPerson]
+   /* newCharacterValue: textValue */
+ })
+}
+
 //adds user's faves to faves state
 addToFavorite = (character) => {
   this.setState({
@@ -48,21 +57,13 @@ addToFavorite = (character) => {
 }
 
 
-showFavorites = (character) => {
+clearFavorites = (character) => {
   console.log('clearing list...')
   this.setState({
     faves: []
   })
   }
 
-addCharacter = (e, newCharacter) => {
-  /* const newCharacter.name = e.target.value */
-  console.log('adding character')
-  this.setState({
-    characters: [...this.state.characters, newCharacter],
-    newCharacterValue: ''
-  })
-}
 
 //deletes character and resets the state
 deleteCharacter = (character) => {
@@ -138,16 +139,16 @@ const faveCharacterArray = this.state.faves.map((item, index) => {
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
 
-         <NewCharacter onClick={this.addCharacter}/>  
+         <NewCharacter addCharacter={this.addCharacter}/>  
               
       </form>
       {/* <Faves faveData={this.showFavorites}/> */}
        <button onClick={this.clearList}>Clear List</button> 
-       <button onClick={this.showFavorites}>Clear Favorites</button>
-       <h2>Faves</h2>
+       <button onClick={this.clearFavorites}>Clear Favorites</button>
+       <h2 className="headers">Faves</h2>
        {faveCharacterArray}
        <hr></hr>
-       <h2>All Characters</h2>
+       <h2 className="headers">All Characters</h2>
       {characterArray}
      
     </div>
