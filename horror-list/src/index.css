@@ -37,11 +37,4 @@ color: white;
 font-family: Imported;
 }
 
-.title {
-  font-family: Imported;
-  font-size: 80px;
-  font-weight: 100;
-  color: rgb(11, 167, 190);
-  -webkit-text-stroke: 1px black;
-  text-shadow: #8ac02e -1px 0 10px;
-}
+

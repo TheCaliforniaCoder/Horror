@@ -1,8 +1,14 @@
-.fields{
+.prompts{
     font-size: 1.5em;
+    color: white;
+    display: flex;
 }
 
 .button{
-    font-size: 1.5em;
+    font-size: 1em;
     color: rgb(1, 52, 54);
+    padding: 5px;
+    margin: 10px;
+    border: 5px solid rgb(11, 167, 190);
+    border-radius: 10px;
 }

@@ -3,6 +3,7 @@ import Character from './Character';
 import Search from './Search';
 import NewCharacter from './NewCharacter';
 import axios from 'axios'; 
+import './App.css'
 
 class App extends Component{
 constructor(props){

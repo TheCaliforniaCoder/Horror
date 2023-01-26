@@ -34,14 +34,14 @@ onChange = (e) => {
 render() {
     return (
         <div>
-            <label>Add new character name here:</label>
+            <label className='prompts'>Add new character name here: </label>
              <input className='fields'
                     type='text' 
-                    placeholder='Add new character name here'
+                    placeholder='Add new character'
                     value={this.state.searchValue}
                     onChange={this.onChange}/>
             <button className='button'
-                    onClick={this.onClick}>Add character</button>
+                    onClick={this.onClick}>Add</button>
         </div>
     )
    }
