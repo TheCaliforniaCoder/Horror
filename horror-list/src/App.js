@@ -139,8 +139,8 @@ const faveCharacterArray = this.state.faves.map((item, index) => {
                 onChange={this.handleSearchChange}/>
         <NewCharacter addCharacter={this.addCharacter}/>       
       </form>
-       <button onClick={this.clearList}>Clear List</button> 
-       <button onClick={this.clearFavorites}>Clear Favorites</button>
+       <button className='clear' onClick={this.clearList}>Clear List</button> 
+       <button className='clear' onClick={this.clearFavorites}>Clear Favorites</button>
        <h2 className="headers">Faves</h2>
        {faveCharacterArray}
        <hr></hr>

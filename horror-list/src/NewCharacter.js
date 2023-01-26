@@ -33,9 +33,9 @@ onChange = (e) => {
 
 render() {
     return (
-        <div>
+        <div className='new'>
             <label className='prompts'>Add new character name here: </label>
-             <input className='fields'
+             <input 
                     type='text' 
                     placeholder='Add new character'
                     value={this.state.searchValue}
