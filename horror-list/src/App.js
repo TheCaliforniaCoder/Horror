@@ -141,10 +141,10 @@ const faveCharacterArray = this.state.faves.map((item, index) => {
       </form>
        <button className='clear' onClick={this.clearList}>Clear List</button> 
        <button className='clear' onClick={this.clearFavorites}>Clear Favorites</button>
-       <h2 className="headers">Faves</h2>
+       <h2 className="headers">FAVES</h2>
        {faveCharacterArray}
        <hr></hr>
-       <h2 className="headers">All Characters</h2>
+       <h2 className="headers">ALL CHARACTERS</h2>
       {characterArray}
     </div>
   )

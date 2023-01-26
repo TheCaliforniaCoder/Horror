@@ -34,7 +34,7 @@ onChange = (e) => {
 render() {
     return (
         <div className='new'>
-            <label className='prompts'>Add new character name here: </label>
+            <label className='prompts'>ADD NEW CHARACTER NAME HERE: </label>
              <input 
                     type='text' 
                     placeholder='Add new character'

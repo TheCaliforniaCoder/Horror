@@ -3,7 +3,7 @@ const Search = function(props){
     
 return (
     <div className='search'>
-        <label className='prompts'>Search for a character name here:</label>
+        <label className='prompts'>SEARCH FOR CHARACTER NAME HERE:</label>
          <input className='input'
                 type='text'
                 placeholder="Search character"

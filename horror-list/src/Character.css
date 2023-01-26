@@ -1,0 +1,26 @@
+.buttons{
+    font-size: 1em;
+    color: rgb(1, 52, 54);
+    padding: 5px;
+    margin-left: 10px;
+    border: 2px solid rgb(11, 167, 190);
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1em;
+    color: rgb(1, 52, 54);
+    padding: 1px;
+    margin-left: 10px;
+    border: 2px solid #8ac02e;
+    border-radius: 10px;
+}
+
+.headers{
+    color: #8ac02e;
+    text-align: center;
+  }
