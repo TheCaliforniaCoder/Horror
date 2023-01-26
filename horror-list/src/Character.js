@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Character extends Component{
 onClick = (e) => {
-    console.log('button clicked', this.props)
     const character = {
         name: this.props.name,
         status: this.props.status,
@@ -11,7 +10,6 @@ onClick = (e) => {
         location: this.props.location,
         image: this.props.image
     }
-    console.log(character)
    this.props.addToFavorite(character)
 }   
 

@@ -17,34 +17,26 @@ constructor(props){
 }
 
 componentDidMount(){
-  
  this.apiCall();
 }
 
-//takes input and matches it to api
+//takes input and matches it to api characters
 handleSearchChange = (e) => {
   const textValue = e.target.value;
- /*  this.apiCall() */
-  console.log(textValue)
-
-  const filteredCharacterList = this.state.characters.filter(function(person) {
+  const filteredCharacterList = this.state.characters.filter(function(person){
     return person.name.toLowerCase().includes(textValue.toLowerCase())
   })
-
-  //allow user to input text
+//allow user to input text
   this.setState({
     searchValue: textValue,
     filteredCharacters: filteredCharacterList 
-    
   })
 }
 
 addCharacter = (newPerson) => {
- console.log('adding character', newPerson)
  this.setState({
    characters: [...this.state.characters, newPerson],
    filteredCharacters: [...this.state.characters, newPerson]
-   /* newCharacterValue: textValue */
  })
 }
 
@@ -57,24 +49,22 @@ addToFavorite = (character) => {
 
 changeName = (item, index) => {
   let changedName = prompt('What do you wish to rename this character?');
-console.log(item, index)
   const newArray = [...this.state.characters]
   const itemIndex = newArray.indexOf(item)
   newArray[itemIndex] = {
     ...item, name: changedName
   }
-this.setState({
-  characters: newArray,
-  filteredCharacters: newArray
-})
+  this.setState({
+    characters: newArray,
+    filteredCharacters: newArray
+  })
 }
 
 clearFavorites = (character) => {
-  console.log('clearing list...')
   this.setState({
     faves: []
   })
-  }
+}
 
 
 //deletes character and resets the state
@@ -83,20 +73,18 @@ let characters = this.state.characters.slice()
 characters = characters.filter(person => {
   return person.name !== character.name
 })
-console.log(characters)
 let filteredCharacters = this.state.filteredCharacters.slice()
 filteredCharacters = filteredCharacters.filter(person => {
   return person.name !== character.name
 })
-this.setState({
-  characters: characters,
-  filteredCharacters: filteredCharacters
-})
+  this.setState({
+    characters: characters,
+    filteredCharacters: filteredCharacters
+  })
 }
 
 
 clearList = (e) => {
-  console.log('clearing list...')
   this.setState({
     filteredCharacters: []
   })
@@ -105,7 +93,6 @@ clearList = (e) => {
   apiCall() {
     const url = 'https://rickandmortyapi.com/api/character'
     
-
     axios.get(url)
     .then(response => {
       return response.data.results
@@ -119,7 +106,6 @@ clearList = (e) => {
   }
 
  render(){
- //character component that renders 
 const characterArray = this.state.filteredCharacters.map((item, index) => {
   return <Character name={item.name}
                     status={item.status} 
@@ -144,18 +130,14 @@ const faveCharacterArray = this.state.faves.map((item, index) => {
                     key={index} />
 })
 
-//below is what shows on the page
   return (
     <div>
       <h1 className="title">Rick and Morty Character List</h1>
       <form>
         <Search value={this.state.searchValue}
                 onChange={this.handleSearchChange}/>
-
-         <NewCharacter addCharacter={this.addCharacter}/>  
-              
+        <NewCharacter addCharacter={this.addCharacter}/>       
       </form>
-      {/* <Faves faveData={this.showFavorites}/> */}
        <button onClick={this.clearList}>Clear List</button> 
        <button onClick={this.clearFavorites}>Clear Favorites</button>
        <h2 className="headers">Faves</h2>
@@ -163,7 +145,6 @@ const faveCharacterArray = this.state.faves.map((item, index) => {
        <hr></hr>
        <h2 className="headers">All Characters</h2>
       {characterArray}
-     
     </div>
   )
  }
