@@ -24,7 +24,10 @@
    
 ## Technologies Used
 
-   I used ReactJS and the Rick and Morty API to build this project
+  * ReactJS
+  * Axios
+  * HTML
+  * Pure CSS
    
 ## Planning 
 
