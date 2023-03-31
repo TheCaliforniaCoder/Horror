@@ -44,7 +44,7 @@ This is my first project using React as part of the SEI General Assembly Course.
 
 ## Build/Code Process
 
-   With one week for development, I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. After choosing the Rick and Morty API and forming the necessary components, I began with making the API call.
+With one week for development, I focused on delivering the core technical requirements while ensuring the page and code could scale to the optional extras. After choosing the Rick and Morty API and forming the necessary components, I began with making the API call.
    
    * My first API call:
    
@@ -52,13 +52,33 @@ This is my first project using React as part of the SEI General Assembly Course.
    
    This was my first time using axios to make an API call. Excited to do many more!
    
-   Most of my time was spent executing CRUD actions on characters: Create, Read, Update, & Delete etc.
+After obtaining the comprehensive list of characters from the Rick and Morty API, my attention shifted towards user actions. Specifically, I aimed to enable users to add, delete, or modify existing characters, as well as manage their favorites by adding or removing characters. To achieve this, I developed three components external to the App component. The first is the 'Search' component, allowing users to input the name of the desired character. The second component is the 'NewCharacter' component, enabling users to create a new character by inputting its name. Lastly, the 'Character' component serves as the primary interface for users to execute the aforementioned actions, such as editing, deleting, or adding characters to their favorites.
    
-   * Add, Update and Delete Functions:
+   * Character Component:
    
-   ![Imgur](https://i.imgur.com/DxdwwFM.jpg)
+   (Need to include snippet)
    
-   * Handle Search Function:
+   The App Component hosted several functions called in the Components mentioned above. 
+
+One function I particularly enjoyed building was the ‘deleteCharacter’ function where I created a copy of the ‘characters’ array stored in the component's state using the slice() method. 
+
+Then, I filtered this copied array to remove the ‘character’ object passed as a parameter by checking if the ‘name’ property of each object in the array is not equal to the ‘name’ property of the passed ‘character’ object.
+
+I then created another copy of the ‘filteredCharacters’ array stored in the component's state using the slice() method while filtering this copied array to remove the ‘character’ object passed as a parameter using the same approach.
+
+Lastly, I called the ‘setState’ method to update the state of the component with the new ‘characters’ and ‘filteredCharacters’ arrays that no longer included the removed ‘character’ object.
+
+    * deleteCharacter Function:
+    
+    (Need to include snippet)
+    
+In the following code block, I defined a function called ‘handleSearchChange’ that takes an event object ‘e’ as a parameter. When this function is triggered, I first extracted the value of the input field that triggered the event using ‘e.target.value’ and assigned it to a constant called ‘textValue’.
+
+After that, I created a new array called ‘filteredCharacterList’ by filtering the ‘characters’ array stored in my component's state. I used the filter function to check if the ‘name’ property of each object in the ‘characters’ array contains the ‘textValue’ string entered by the user, regardless of the case. If it does, the object is included in the new ‘filteredCharacterList’ array.
+
+I then updated the state of my component using the ‘setState’ method. I set the ‘searchValue’ property of the state to the ‘textValue’ entered by the user and the ‘filteredCharacters’ property of the state to the ‘filteredCharacterList’ array created in the previous step.
+   
+   * handleSearchChange Function:
 
    ![Imgur](https://i.imgur.com/2pAxoTq.png)
    
@@ -66,11 +86,11 @@ This is my first project using React as part of the SEI General Assembly Course.
    
 ## Challenges
 
-Selecting an appropriate API proved to be the biggest obstacle, and it took me two days of the seven-day project to scour for the ideal one. This task educated me on how to thoroughly comprehend API documentation. Additionally, I initially struggled to comprehend the organization of the various components but eventually improved my understanding. Overall, I encountered difficulties determining where to commence, but I tackled the task methodically.
+Selecting an appropriate API proved to be the biggest obstacle, as it took me two days of the seven-day project to scour for the ideal one. This task educated me on how to thoroughly comprehend API documentation. Additionally, I initially struggled to comprehend the organization of the various components but eventually improved my understanding. Overall, I encountered difficulties determining where to commence, but I tackled the task methodically.
      
 ## Wins
    
-   Besides finishing on time, I'd say the biggest win is learning how to create a React app using an API. I even surprised myself by tackling one of the      additional features: the search function.
+Besides finishing on time, I'd say the biggest win is learning how to create a React app using a third-party API. I even surprised myself by tackling one of the additional features: the search function.
       
 ## Key Learnings & Takeaways
   
@@ -80,5 +100,5 @@ Selecting an appropriate API proved to be the biggest obstacle, and it took me t
 
 ## Future Improvements
 
-   Going forward, I'd like to re-design the overall layout of the page and structure it differently. Users will also be allowed to upload an image for the characters they add. 
+In the future, my plan is to revamp the page's layout and alter its structure. Additionally, I intend to add audio effects and enable users to upload images for the characters they add.
 
