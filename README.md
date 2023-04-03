@@ -48,7 +48,22 @@ With one week for development, I focused on delivering the core technical requir
    
    * My first API call:
    
-   ![Imgur](https://i.imgur.com/aAXOPNV.png)
+   ```javascript
+   
+apiCall() {
+  const url = 'https://rickandmortyapi.com/api/character'
+  axios.get(url)
+    .then(response => {
+      return response.data.results
+    })
+    .then(results => {
+      this.setState({
+        characters: results,
+        filteredCharacters: results
+      })
+    })
+}
+   ```
    
    This was my first time using axios to make an API call. Excited to do many more!
    
@@ -56,7 +71,58 @@ After obtaining the comprehensive list of characters from the Rick and Morty API
    
    * Character Component:
    
-   (Need to include snippet)
+   ```javascript
+
+class Character extends Component{
+onClick = (e) => {
+    const character = {
+        name: this.props.name,
+        status: this.props.status,
+        species: this.props.species,
+        origin: this.props.origin,
+        location: this.props.location,
+        image: this.props.image
+    }
+   this.props.addToFavorite(character)
+}   
+
+delete = (e) => {
+    const character = {
+        name: this.props.name,
+        status: this.props.status,
+        species: this.props.species,
+        origin: this.props.origin,
+        location: this.props.location
+    }
+    this.props.deleteCharacter(character)
+}
+
+
+      render(){
+          return (
+              <div className='container'>
+                  <div id='char' className='text'>
+                      <h2>Name: {this.props.name}</h2>
+                      <h3>Status: {this.props.status}</h3>
+                      <h3>Species: {this.props.species}</h3>
+                      <h3>Origin: {this.props.origin}</h3>
+                      <h3>Location: {this.props.location}</h3>
+
+                      <img className="images" alt="characters" src={this.props.image}/>
+                  </div>
+                  <div>
+                      <button className='buttons' onClick={this.onClick}>Add to Favorites</button> 
+                      <button className='buttons' onClick={this.delete}>Remove Character</button>
+                      <button className='buttons' onClick={this.props.changeName}>Edit Name</button>
+                  </div>
+
+              </div>
+          )
+      }
+}
+
+export default Character;
+   ```
    
    The App Component hosted several functions called in the Components mentioned above. 
 
@@ -68,9 +134,28 @@ I then created another copy of the ‘filteredCharacters’ array stored in the 
 
 Lastly, I called the ‘setState’ method to update the state of the component with the new ‘characters’ and ‘filteredCharacters’ arrays that no longer included the removed ‘character’ object.
 
-    * deleteCharacter Function:
+   * deleteCharacter Function:
     
-    (Need to include snippet)
+ ```javascript   
+//deletes character and resets the state
+deleteCharacter = (character) => {
+  let characters = this.state.characters.slice()
+  characters = characters.filter(person => {
+    return person.name !== character.name
+  })
+
+  let filteredCharacters = this.state.filteredCharacters.slice()
+  filteredCharacters = filteredCharacters.filter(person => {
+    return person.name !== character.name
+  })
+
+  this.setState({
+    characters: characters,
+    filteredCharacters: filteredCharacters
+  })
+}
+
+ ```
     
 In the following code block, I defined a function called ‘handleSearchChange’ that takes an event object ‘e’ as a parameter. When this function is triggered, I first extracted the value of the input field that triggered the event using ‘e.target.value’ and assigned it to a constant called ‘textValue’.
 
@@ -80,7 +165,22 @@ I then updated the state of my component using the ‘setState’ method. I set 
    
    * handleSearchChange Function:
 
-   ![Imgur](https://i.imgur.com/2pAxoTq.png)
+ ```javascript
+   
+//takes input and matches it to api characters
+handleSearchChange = (e) => {
+  const textValue = e.target.value;
+  const filteredCharacterList = this.state.characters.filter(function(person){
+    return person.name.toLowerCase().includes(textValue.toLowerCase())
+  })
+
+  //allow user to input text
+  this.setState({
+    searchValue: textValue,
+    filteredCharacters: filteredCharacterList 
+  })
+}
+ ```
    
    This was a bonus feature that made the page more user friendly.
    
