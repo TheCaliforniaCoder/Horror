@@ -200,5 +200,5 @@ Besides finishing on time, I'd say the biggest win is learning how to create a R
 
 ## Future Improvements
 
-In the future, my plan is to revamp the page's layout and alter its structure. Additionally, I intend to add audio effects and enable users to upload images for the characters they add.
+In the future, my plan is to revamp the page's layout and alter its structure. I'd also like to make the page responsive. Additionally, I intend to add audio effects and enable users to upload images for the characters they add.
 
